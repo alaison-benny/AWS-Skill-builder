@@ -1,0 +1,117 @@
+On the top navigation bar, review the Region selector to ensure that the Region is set to N. Virginia (us-east-1).
+2. In the Services search box, type:
+
+ec2
+		 
+3. In the search results, under Services, click EC2.
+4. Go to the next step.
+
+1. In the Instances section, choose the check box to select the Web Server instance.
+2. On the Details tab, under Public IPv4 address, click the copy icon to copy the provided address. 
+3. Go to the next step.
+
+1. In a new browser tab, paste the IP address that you just copied and press Enter.
+
+- After a few minutes, a site timeout message will appear.
+
+2. To solve this issue, return to the previous browser (the Instances page in the Amazon EC2 console).
+3. Go to the next step.
+
+1. In the Instances section, choose the check box to select the Web Server instance.
+2. Click the Networking tab.
+3. Review the Public and Private IPv4 addresses. 
+4. Go to the next step.
+
+1. Under Subnet ID, click the provided ID.
+2. Go to the next step.
+
+1. In the Subnets section, choose the check box to select the network-concepts subnet.
+2. Click the Route table tab.
+3. Next to Route table, click the link name that contains web-server-netSubnet1.
+4. Go to the next step.
+
+1. In the Route tables section, choose the check box to select the network-concepts route table.
+2. Click the Routes tab.
+3. Review the two route table entries. 
+
+- One route sends local traffic to the local network only, and the other route sends all other traffic to the internet through a NAT gateway.
+
+4. Click Edit routes.
+
+1. To delete the NAT gateway from the route table, click Remove.
+2. Go to the next step.
+
+1. Click Add route.
+2. To configure the new route, for Destination, type:
+
+0.0.0.0/0
+		
+3. For Target, choose Internet Gateway.
+4. Choose igw-xxxxxxx(network-concepts/VPC).
+5. Click Save changes.
+6. Go to the next step.
+
+1. On the Routes tab, review the new internet gateway association. 
+
+- The subnet is now reachable from the Internet.
+
+2. Navigate to the Instances page on the Amazon EC2 console.
+
+- Remember, on the top navigation bar, you can use the Services search box (or click Services) to navigate to a different service console.
+
+3. Go to the next step.
+
+
+1. In the left navigation pane, click Instances.
+2. In the Instances section, choose the check box to select the Web Server instance.
+3. Click the Security tab.
+4. Under Security groups, click WebServerSecurityGroup.
+5. Go to the next step.
+
+1. On the Inbound rules tab, click Edit inbound rules.
+2. Go to the next step.
+
+1. Click Add rule.
+2. Go to the next step.
+
+1. In the Inbound rules section, for Type, click the search box to expand the dropdown menu.
+2. Scroll down to see the various predefined protocols available.
+
+- You can see MYSQL/Aurora protocol on the dropdown menu, which you will use in the upcoming DIY section of this solution.
+
+3. Choose HTTP.
+4. Go to the next step.
+
+1. For Source, choose Anywhere-IPv4.
+2. Review the recommended setting warning alert.
+3. Click Save rules.
+4. Go to the next step.
+
+1. In the left navigation pane, click Instances.
+2. Go to the next step.
+
+1. In the Instances section, choose the check box to select the Web Server instance.
+ 
+ - This will test connectivity using a Java application. 
+
+2. Click the Networking tab.
+3. Under Public IPv4 address, click the copy icon to copy the provided address.
+4. Go to the next step.
+
+1. In a new browser tab, paste the instance IP address that you just copied and press Enter.
+
+- Make sure to use HTTP, not HTTPS.
+
+2. Review the application that loads from the public IP address.
+3. Review the connection from the internet to the Web Server.   
+
+- A connection should be established.
+
+4. Review the connection from the Web Server to the DB Server.  
+
+- A connection from the Web Server to the DB Server should display as failed.
+
+5. Go to the next step.
+
+
+
